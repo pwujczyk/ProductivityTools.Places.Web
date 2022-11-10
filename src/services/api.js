@@ -6,10 +6,16 @@ async function getDate(){
     return response.data;
 }
 
+async function getPlaceList(){
+    const response=await axios.get(`${config.PATH_BASE}/PlaceList`);
+    return response.data;
+}
+
 
 
 const service={
-    getDate
+    getDate,
+    getPlaceList
 }
 
 export default service
