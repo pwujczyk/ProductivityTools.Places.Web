@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import service from '../../../services/api.js'
+import {Link} from 'react-router-dom'
 
 function PlaceList() {
 
@@ -27,6 +28,7 @@ function PlaceList() {
                     </div>
                 )
             })}
+            <Link to='New'>New</Link>
         </div>
     )
 }
