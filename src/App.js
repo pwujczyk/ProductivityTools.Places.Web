@@ -23,7 +23,6 @@ function App() {
 
         </Routes>
       </Router>
-      pawel
       <Date />
     </div>
   );

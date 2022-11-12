@@ -6,6 +6,11 @@ async function getDate() {
     return response.data;
 }
 
+async function getPlace(id) {
+    const response = await axios.get(`${config.PATH_BASE}/Place?id=${id}`);
+    return response.data;
+}
+
 async function getPlaceList() {
     const response = await axios.get(`${config.PATH_BASE}/PlaceList`);
     return response.data;
@@ -22,6 +27,7 @@ async function newPlace(name) {
 
 const service = {
     getDate,
+    getPlace,
     getPlaceList,
     newPlace
 }
