@@ -3,6 +3,9 @@ import Date from './Components/Date'
 import PlaceList from './Components/Place/List'
 import PlaceEdit from './Components/Place/Edit';
 import PlaceItem from './Components/Place/Item';
+
+import VisitEdit from './Components/Visit/Edit';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -19,6 +22,8 @@ function App() {
           <Route path='/Edit' element={<PlaceEdit />} />
           <Route path='/New' element={<PlaceEdit />} />
           <Route path='/Item/:id' element={<PlaceItem />} />
+          <Route path='/VisitNew' element={<VisitEdit />} />
+          <Route path='/VisitEdit' element={<VisitEdit />} />
 
 
         </Routes>

@@ -24,6 +24,7 @@ function PlaceEdit() {
         <div>
             <span>{mode == 'new' ? "New" : "Edit"} </span>
             <span><span>name</span><input type="text" onChange={(e) => setPlaceEdit({ Name: e.target.value })}></input></span>
+            <span><span>Description</span><input type="text" onChange={(e) => setPlaceEdit({ Description: e.target.value })}></input></span>
             <br></br>
             <span>{pathname}</span>
             <button onClick={add}>Add</button>

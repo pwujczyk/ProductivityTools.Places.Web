@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import service from '../../../services/api.js'
 
 
@@ -23,7 +23,7 @@ function PlaceItem() {
             <p>PlaceId: {place && place.id}</p>
             <p>PlaceName: {place && place.name}</p>
             <p>Visits:</p>
-            <button>Add Visit</button>
+            <Link to='/VisitNew'>New</Link>
         </div>
 
     )
