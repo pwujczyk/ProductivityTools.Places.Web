@@ -46,7 +46,8 @@ async function uploadPhoto(photo){
    
     // Request made to the backend api
     // Send formData object
-    await axios.post(`${config.PATH_BASE}/uploads`, formData);
+    const response=await axios.post(`${config.PATH_BASE}/uploads`, formData);
+    return response.data;
 }
 
 
