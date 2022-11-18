@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import service from '../../../services/api.js'
-
+import VisitEdit from '../../Visit/Edit/index.js';
 
 function PlaceItem() {
     const { id } = useParams();
 
     const [place, setPlace] = useState();
+    const [mode, setMode] = useState(null);
 
     useEffect(() => {
         const call = async () => {
@@ -16,14 +17,33 @@ function PlaceItem() {
         call();
     }, [])
 
+
+    const newVisit = () => {
+        setMode('newVisit')
+    }
+
+    const renderVisits = () => {
+        if (mode == 'newVisit') {
+            return (
+                <VisitEdit />
+            )
+        }
+        else {
+            return (
+                <span>Visits:</span>
+            )
+        }
+    }
+
+
     return (
         <div>
             <p>item</p>
             <p>id: {id}</p>
             <p>PlaceId: {place && place.id}</p>
             <p>PlaceName: {place && place.name}</p>
-            <p>Visits:</p>
-            <Link to='/VisitNew'>New</Link>
+            {renderVisits()}
+            <button onClick={newVisit}>New visit</button>
         </div>
 
     )

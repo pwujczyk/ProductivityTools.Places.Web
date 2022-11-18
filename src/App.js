@@ -22,8 +22,8 @@ function App() {
           <Route path='/Edit' element={<PlaceEdit />} />
           <Route path='/New' element={<PlaceEdit />} />
           <Route path='/Item/:id' element={<PlaceItem />} />
-          <Route path='/VisitNew' element={<VisitEdit />} />
-          <Route path='/VisitEdit' element={<VisitEdit />} />
+          {/* <Route path='/VisitNew' element={<VisitEdit />} />
+          <Route path='/VisitEdit' element={<VisitEdit />} /> */}
 
 
         </Routes>

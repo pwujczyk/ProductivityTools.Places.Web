@@ -23,6 +23,7 @@ function VisitEdit() {
         console.log(event.target.files[0])
 
     };
+
     const onFileUpload = async () => {
         var r = await service.uploadPhoto(file);
         let photos = vistEdit.Photos;
@@ -32,6 +33,11 @@ function VisitEdit() {
         console.log(r);
 
     };
+
+    const add=()=>
+    {
+        
+    }
 
     return (
         <div>VisitEditpm
@@ -51,6 +57,7 @@ function VisitEdit() {
                     return (<span>{x}</span>)
                 })}
             </span>
+            <button onClick={add}>Add</button>
         </div >
 
     )
