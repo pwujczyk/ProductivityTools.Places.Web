@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import service from '../../../services/api.js'
 
 
-function VisitEdit() {
+function VisitEdit({ updateVisit }) {
     const [vistEdit, setVisitEdit] = useState({ Comment: '', Photos: ['dd', 'dd'] });
     const { pathname } = useLocation();
     const [mode, setMode] = useState('new')
@@ -19,6 +19,7 @@ function VisitEdit() {
 
 
     const onFileChange = event => {
+        console.log(vistEdit);
         setFile(event.target.files[0])
         console.log(event.target.files[0])
 
@@ -26,24 +27,25 @@ function VisitEdit() {
 
     const onFileUpload = async () => {
         var r = await service.uploadPhoto(file);
+        console.log(vistEdit);
         let photos = vistEdit.Photos;
         console.log(r);
+        console.log(photos);
         photos.push(r.data);
         setVisitEdit({ Photos: photos });
         console.log(r);
 
     };
 
-    const add=()=>
-    {
-        
+    const add = () => {
+        updateVisit(vistEdit);
     }
 
     return (
         <div>VisitEditpm
             <div>Mode: {mode}</div>
             <div>Date:<input type="text"></input></div>
-            <div>Commment: <input type="text" onChange={(e) => setVisitEdit({ Comment: e.target.value })}></input></div>
+            <div>Commment: <input type="text" onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Comment: e.target.value }))}></input></div>
             Photos:
             <input type="file" onChange={onFileChange} />
             <button onClick={onFileUpload}>

@@ -22,15 +22,39 @@ function PlaceItem() {
         setMode('newVisit')
     }
 
+    const updateVisit = (visit) => {
+        console.log(visit);
+        let placeVisits = place.visits;
+        if (placeVisits == undefined) {
+            placeVisits = [];
+        }
+
+        placeVisits.push(visit);
+
+        setPlace(prevState => ({
+            ...prevState, visits: placeVisits
+        }))
+        console.log(place);
+        setMode('visitList');
+    }
+
     const renderVisits = () => {
         if (mode == 'newVisit') {
             return (
-                <VisitEdit />
+                <VisitEdit updateVisit={updateVisit} />
             )
         }
         else {
             return (
-                <span>Visits:</span>
+                <>
+                    <span>Visits:</span>
+                    {console.log(place)}
+                    {console.log(place?.visits)}
+                    {place && place.visits && place.visits.map(x=>{
+                        return(<p>fsdafad</p>)
+                    })}
+                    <button onClick={newVisit}>New visit</button>
+                </>
             )
         }
     }
@@ -43,7 +67,7 @@ function PlaceItem() {
             <p>PlaceId: {place && place.id}</p>
             <p>PlaceName: {place && place.name}</p>
             {renderVisits()}
-            <button onClick={newVisit}>New visit</button>
+
         </div>
 
     )
