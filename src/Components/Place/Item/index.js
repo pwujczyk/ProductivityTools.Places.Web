@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import service from '../../../services/api.js'
 import VisitEdit from '../../Visit/Edit/index.js';
+import VisitItem from '../../Visit/Item'
 
 function PlaceItem() {
     const { id } = useParams();
@@ -51,7 +52,7 @@ function PlaceItem() {
                     {console.log(place)}
                     {console.log(place?.visits)}
                     {place && place.visits && place.visits.map(x=>{
-                        return(<p>fsdafad</p>)
+                        return(<VisitItem item={x}></VisitItem>)
                     })}
                     <button onClick={newVisit}>New visit</button>
                 </>
