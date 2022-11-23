@@ -4,7 +4,7 @@ import service from '../../../services/api.js'
 
 
 function VisitEdit({ updateVisit }) {
-    const [vistEdit, setVisitEdit] = useState({ Comment: '', Photos: ['dd', 'dd'] });
+    const [vistEdit, setVisitEdit] = useState({ Comment: '', Photos: [] });
     const { pathname } = useLocation();
     const [mode, setMode] = useState('new')
     const [file, setFile] = useState();
