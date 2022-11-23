@@ -37,6 +37,11 @@ function PlaceItem() {
         }))
         console.log(place);
         setMode('visitList');
+        // let updatePlace = {
+        //     documentId: id,
+        //     name: "FDafsaf"
+        // }
+        service.updatePlace(place)
     }
 
     const renderVisits = () => {
@@ -51,8 +56,8 @@ function PlaceItem() {
                     <span>Visits:</span>
                     {console.log(place)}
                     {console.log(place?.visits)}
-                    {place && place.visits && place.visits.map(x=>{
-                        return(<VisitItem item={x}></VisitItem>)
+                    {place && place.visits && place.visits.map(x => {
+                        return (<VisitItem item={x}></VisitItem>)
                     })}
                     <button onClick={newVisit}>New visit</button>
                 </>

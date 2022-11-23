@@ -23,13 +23,20 @@ async function newPlace(name) {
     return r;
 }
 
+async function updatePlace(place){
 
-async function newVisit(){
-    let data={Comment:"pawel ma kota"}
-    const response=await axios.post(`${config.PATH_BASE}/NewVisit`,data);
+    const response = await axios.post(`${config.PATH_BASE}/UpdatePlace`,place);
     let r=response.data;
-    return r;
+    return r; 
 }
+
+
+// async function newVisit(){
+//     let data={Comment:"pawel ma kota"}
+//     const response=await axios.post(`${config.PATH_BASE}/NewVisit`,data);
+//     let r=response.data;
+//     return r;
+// }
 
 async function uploadPhoto(photo){
     const formData = new FormData();
@@ -56,7 +63,7 @@ const service = {
     getPlace,
     getPlaceList,
     newPlace,
-    newVisit,
+    updatePlace,
     uploadPhoto
 }
 
