@@ -32,7 +32,7 @@ function VisitEdit({ updateVisit }) {
         console.log(r);
         console.log(photos);
         photos.push(r.data);
-        setVisitEdit({ Photos: photos });
+        setVisitEdit({...vistEdit, Photos: photos });
         console.log(r);
 
     };

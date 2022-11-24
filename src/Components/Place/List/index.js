@@ -23,7 +23,7 @@ function PlaceList() {
             {placeList && placeList.map(x => {
                 return (
                     <div>
-                        <p>{x.id} - <Link to={"Item\\"+x.id}>{x.name}</Link></p>
+                        <p>{x.id} - <Link to={"Item\\"+x.id}>{x.Name}</Link></p>
                     </div>
                 )
             })}

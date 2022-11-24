@@ -88,7 +88,8 @@ function PlaceItem() {
             <p>item</p>
             <p>id: {id}</p>
             <p>PlaceId: {place && place.id}</p>
-            <p>PlaceName: {place && place.name}</p>
+            <p>PlaceName: {place && place.Name}</p>
+            <p>Description: {place && place.Description}</p>
             {renderVisits()}
 
         </div>

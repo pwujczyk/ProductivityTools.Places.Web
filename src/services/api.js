@@ -16,8 +16,7 @@ async function getPlaceList() {
     return response.data;
 }
 
-async function newPlace(name) {
-    let data = { name: name }
+async function newPlace(data) {
     const response = await axios.post(`${config.PATH_BASE}/NewPlace`,data);
     let r=response.data;
     return r;
