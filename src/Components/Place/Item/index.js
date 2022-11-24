@@ -8,6 +8,7 @@ function PlaceItem() {
     const { id } = useParams();
 
     const [place, setPlace] = useState();
+    const [updatePlace,setUpdatePlace]=useState(false)
     const [mode, setMode] = useState(null);
 
     useEffect(() => {
@@ -17,6 +18,14 @@ function PlaceItem() {
         }
         call();
     }, [])
+
+    useEffect(()=>{
+        const call = async () => {
+            let result = await  service.updatePlace(place)
+            setPlace(result);
+        }
+        call();
+    },[place.visits])
 
 
     const newVisit = () => {
@@ -35,13 +44,15 @@ function PlaceItem() {
         setPlace(prevState => ({
             ...prevState, visits: placeVisits
         }))
+        console.log("updatevisit, does place have visits?")
         console.log(place);
         setMode('visitList');
         // let updatePlace = {
         //     documentId: id,
         //     name: "FDafsaf"
         // }
-        service.updatePlace(place)
+
+
     }
 
     const renderVisits = () => {

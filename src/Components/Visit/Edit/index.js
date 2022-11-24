@@ -56,7 +56,11 @@ function VisitEdit({ updateVisit }) {
             <br />
             <span>Photos:
                 {vistEdit && vistEdit.Photos && vistEdit.Photos.map(x => {
-                    return (<span>{x}</span>)
+                    return (<span>
+                        <span>{x}</span>
+                        obrazek
+                        <img src={x}/>
+                    </span>)
                 })}
             </span>
             <button onClick={add}>Add</button>
