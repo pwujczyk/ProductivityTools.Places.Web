@@ -8,7 +8,7 @@ function PlaceItem() {
     const { id } = useParams();
 
     const [place, setPlace] = useState();
-    const [updatePlace,setUpdatePlace]=useState(false)
+    const [updatePlace, setUpdatePlace] = useState(false)
     const [mode, setMode] = useState(null);
 
     useEffect(() => {
@@ -19,13 +19,13 @@ function PlaceItem() {
         call();
     }, [])
 
-    useEffect(()=>{
-        const call = async () => {
-            let result = await  service.updatePlace(place)
-            setPlace(result);
-        }
-        call();
-    },[place.visits])
+    // useEffect(()=>{
+    //     const call = async () => {
+    //         let result = await  service.updatePlace(place)
+    //         setPlace(result);
+    //     }
+    //     call();
+    // },[place.visits])
 
 
     const newVisit = () => {
@@ -33,16 +33,22 @@ function PlaceItem() {
     }
 
     const updateVisit = (visit) => {
+        debugger;
         console.log(visit);
-        let placeVisits = place.visits;
-        if (placeVisits == undefined) {
-            placeVisits = [];
+        if (place.Visits == undefined) {
+            place.Visits  = [];
         }
+        let placeVisits = place.Visits;
+        // if (placeVisits == undefined) {
+        //     placeVisits = [];
+        // }
+
 
         placeVisits.push(visit);
+        let result = service.updatePlace(place)
 
         setPlace(prevState => ({
-            ...prevState, visits: placeVisits
+            ...prevState, Visits: placeVisits
         }))
         console.log("updatevisit, does place have visits?")
         console.log(place);
@@ -67,7 +73,7 @@ function PlaceItem() {
                     <span>Visits:</span>
                     {console.log(place)}
                     {console.log(place?.visits)}
-                    {place && place.visits && place.visits.map(x => {
+                    {place && place.Visits && place.Visits.map(x => {
                         return (<VisitItem item={x}></VisitItem>)
                     })}
                     <button onClick={newVisit}>New visit</button>
