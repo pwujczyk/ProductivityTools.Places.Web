@@ -64,7 +64,7 @@ function PlaceItem() {
     const renderVisits = () => {
         if (mode == 'newVisit') {
             return (
-                <VisitEdit updateVisit={updateVisit} />
+                <VisitEdit updateVisit={updateVisit} placeId={place.id} />
             )
         }
         else {

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import service from '../../../services/api.js'
 
 
-function VisitEdit({ updateVisit }) {
+function VisitEdit({ updateVisit, placeId }) {
     const [vistEdit, setVisitEdit] = useState({ Comment: '', Photos: [] });
     const { pathname } = useLocation();
     const [mode, setMode] = useState('new')
@@ -26,7 +26,7 @@ function VisitEdit({ updateVisit }) {
     };
 
     const onFileUpload = async () => {
-        var r = await service.uploadPhoto(file);
+        var r = await service.uploadPhoto(file,placeId);
         console.log(vistEdit);
         let photos = vistEdit.Photos;
         console.log(r);

@@ -17,16 +17,16 @@ async function getPlaceList() {
 }
 
 async function newPlace(data) {
-    const response = await axios.post(`${config.PATH_BASE}/NewPlace`,data);
-    let r=response.data;
+    const response = await axios.post(`${config.PATH_BASE}/NewPlace`, data);
+    let r = response.data;
     return r;
 }
 
-async function updatePlace(place){
+async function updatePlace(place) {
 
-    const response = await axios.post(`${config.PATH_BASE}/UpdatePlace`,place);
-    let r=response.data;
-    return r; 
+    const response = await axios.post(`${config.PATH_BASE}/UpdatePlace`, place);
+    let r = response.data;
+    return r;
 }
 
 
@@ -37,22 +37,23 @@ async function updatePlace(place){
 //     return r;
 // }
 
-async function uploadPhoto(photo){
+async function uploadPhoto(photo, placeId) {
     const formData = new FormData();
-     
+    let photoName = placeId + "-" + photo.name;
     // Update the formData object
     formData.append(
-      "file",
-      photo,
-      photo.name
+        "file",
+        photo,
+        photoName
     );
-   
+
+
     // Details of the uploaded file
     console.log(photo);
-   
+
     // Request made to the backend api
     // Send formData object
-    const response=await axios.post(`${config.PATH_BASE}/uploads`, formData);
+    const response = await axios.post(`${config.PATH_BASE}/uploads`, formData);
     return response.data;
 }
 
