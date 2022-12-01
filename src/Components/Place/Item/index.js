@@ -36,7 +36,7 @@ function PlaceItem() {
         debugger;
         console.log(visit);
         if (place.Visits == undefined) {
-            place.Visits  = [];
+            place.Visits = [];
         }
         let placeVisits = place.Visits;
         // if (placeVisits == undefined) {
@@ -76,7 +76,10 @@ function PlaceItem() {
                     {place && place.Visits && place.Visits.map(x => {
                         return (<VisitItem item={x}></VisitItem>)
                     })}
-                    <button onClick={newVisit}>New visit</button>
+                    
+                    <div className="newLine">
+                        <button onClick={newVisit}>New visit</button>
+                    </div>
                 </>
             )
         }

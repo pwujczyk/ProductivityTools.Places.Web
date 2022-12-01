@@ -5,11 +5,10 @@ function VisitItem({ item }) {
             <span>Comment:</span><span>{item && item.Comment}</span><br/>
             <span>Photos:</span><br/>
             {item && item.Photos && item.Photos.map(x => {
-                return (<span>
-                    <span>{x}</span>
-                    obrazek
+                return (<div class="crop">
+                    {/* <span>{x}</span><br/> */}
                     <img src={x}/>
-                </span>)
+                </div>)
             })}
         </p>
     )
