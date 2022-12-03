@@ -88,6 +88,7 @@ function PlaceItem() {
 
     return (
         <div>
+            <Link to='/'>Home</Link> 
             <p>item</p>
             <p>id: {id}</p>
             <p>PlaceId: {place && place.id}</p>
