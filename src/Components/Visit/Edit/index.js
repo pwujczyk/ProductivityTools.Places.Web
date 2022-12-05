@@ -26,11 +26,11 @@ function VisitEdit({ updateVisit, placeId }) {
     };
 
     const onFileUpload = async () => {
-        var r = await service.uploadPhoto(file,placeId);
+        var r = await service.uploadPhoto(file, placeId);
         let photos = vistEdit.Photos;
         photos.push(r);
 
-        setVisitEdit({...vistEdit, Photos: photos });
+        setVisitEdit({ ...vistEdit, Photos: photos });
         console.log(r);
     };
 
@@ -57,7 +57,9 @@ function VisitEdit({ updateVisit, placeId }) {
                     return (<span>
                         <span>{x}</span>
                         obrazek
-                        <img src={x}/>
+                        <div className="crop">
+                            <img src={x} />
+                        </div>
                     </span>)
                 })}
             </span>
