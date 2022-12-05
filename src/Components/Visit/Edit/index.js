@@ -26,18 +26,26 @@ function VisitEdit({ updateVisit, placeId }) {
     };
 
     const onFileUpload = async () => {
+        console.log("XXXXXXXX")
         var r = await service.uploadPhoto(file,placeId);
         console.log(vistEdit);
         let photos = vistEdit.Photos;
+        console.log("Photo url:")
         console.log(r);
+        console.log("photos:")
         console.log(photos);
-        photos.push(r.data);
+        photos.push(r);
+
+        console.log("photos after push")
+        console.log(photos);
         setVisitEdit({...vistEdit, Photos: photos });
         console.log(r);
 
     };
 
     const add = () => {
+        console.log("Visit EDIT!!")
+        console.log(vistEdit);
         updateVisit(vistEdit);
     }
 
