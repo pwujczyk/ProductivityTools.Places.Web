@@ -26,25 +26,15 @@ function VisitEdit({ updateVisit, placeId }) {
     };
 
     const onFileUpload = async () => {
-        console.log("XXXXXXXX")
         var r = await service.uploadPhoto(file,placeId);
-        console.log(vistEdit);
         let photos = vistEdit.Photos;
-        console.log("Photo url:")
-        console.log(r);
-        console.log("photos:")
-        console.log(photos);
         photos.push(r);
 
-        console.log("photos after push")
-        console.log(photos);
         setVisitEdit({...vistEdit, Photos: photos });
         console.log(r);
-
     };
 
     const add = () => {
-        console.log("Visit EDIT!!")
         console.log(vistEdit);
         updateVisit(vistEdit);
     }
@@ -52,7 +42,7 @@ function VisitEdit({ updateVisit, placeId }) {
     return (
         <div>VisitEditpm
             <div>Mode: {mode}</div>
-            <div>Date:<input type="text"></input></div>
+            <div>Date:<input type="text" onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Date: e.target.value }))}></input></div>
             <div>Commment: <input type="text" onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Comment: e.target.value }))}></input></div>
             Photos:
             <input type="file" onChange={onFileChange} />
