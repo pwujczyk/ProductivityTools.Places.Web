@@ -14,3 +14,7 @@
 .newLine{
     clear: both;
 }
+
+.visit{
+    display:flow-root;
+}

@@ -1,6 +1,6 @@
 function VisitItem({ item }) {
     return (
-        <p>
+        <div className="visit">
             <span>VisitItem</span><br />
             <span>Comment:</span><span>{item && item.Comment}</span><br/>
             <span>Photos:</span><br/>
@@ -10,7 +10,7 @@ function VisitItem({ item }) {
                     <img src={x}/>
                 </div>)
             })}
-        </p>
+        </div>
     )
 }
 
