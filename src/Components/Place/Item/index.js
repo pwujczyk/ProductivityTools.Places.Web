@@ -28,6 +28,9 @@ function PlaceItem() {
     //     call();
     // },[place.visits])
 
+    const editPlace = () => {
+        setMode('editPlace')
+    }
 
     const newVisit = () => {
         setMode('newVisit')
@@ -38,7 +41,7 @@ function PlaceItem() {
         setEditedVisit(item);
     }
 
-    const updateVisit = (visit) => {
+    const updateVisit = async (visit) => {
         debugger;
         console.log(visit);
         if (place.Visits == undefined) {
@@ -57,7 +60,7 @@ function PlaceItem() {
         if (elementInArray == false) {
             placeVisits.push(visit);
         }
-        let result = service.updatePlace(place)
+        let result = await savePlace();
 
         setPlace(prevState => ({
             ...prevState, Visits: placeVisits
@@ -71,6 +74,11 @@ function PlaceItem() {
         // }
 
 
+    }
+
+    const savePlace = async () => {
+        let result = await service.updatePlace(place)
+        return result;
     }
 
     const renderVisits = () => {
@@ -102,12 +110,30 @@ function PlaceItem() {
         }
     }
 
+    const renderPlace = () => {
+        if (mode == 'editPlace') {
+            return (
+                <>
+                    <h2>Name: <input type="text" value={place?.Name} onChange={(e) => setPlace(prevState => ({ ...prevState, Name: e.target.value }))}></input></h2>
+                    <p>Description: {place && place.Description}</p>
+                    <button onClick={savePlace}>save</button><br />
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <h2>Name: {place && place.Name}<button className='editLink' onClick={editPlace}></button> </h2>
+                    <p>Description: {place && place.Description}</p>
+                </>
+            )
+        }
+    }
+
 
     return (
         <div>
             <Link to='/'>Home</Link>
-            <h2>Name: {place && place.Name}</h2> 
-            <p>Description: {place && place.Description}</p>
+            {renderPlace()}
             {renderVisits()}
             <hr></hr>
             <div className='debug'>
