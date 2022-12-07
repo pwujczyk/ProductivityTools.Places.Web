@@ -7,8 +7,7 @@ function VisitItem({ item, editVisit }) {
 
     return (
         <div className="visit">
-            <span>Date: </span><span>{item && item.Date}</span><button onClick={edit}>Edit</button><br />
-            <span>Comment: </span><span>{item && item.Comment}</span><br /><br />
+            <b>{item && item.Date} </b><span>{item && item.Comment}</span><button className='editLink' onClick={edit}></button><br /><br />
             {item && item.Photos && item.Photos.map(x => {
                 return (<div className="crop">
                     {/* <span>{x}</span><br/> */}
