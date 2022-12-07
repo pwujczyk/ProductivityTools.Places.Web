@@ -10,7 +10,7 @@ function PlaceItem() {
     const [place, setPlace] = useState();
     const [updatePlace, setUpdatePlace] = useState(false)
     const [mode, setMode] = useState(null);
-    const [editedVisit,setEditedVisit]=useState(null);
+    const [editedVisit, setEditedVisit] = useState(null);
 
     useEffect(() => {
         const call = async () => {
@@ -45,12 +45,13 @@ function PlaceItem() {
             place.Visits = [];
         }
         let placeVisits = place.Visits;
-        // if (placeVisits == undefined) {
-        //     placeVisits = [];
-        // }
 
-        
-        placeVisits.push(visit);
+        let element = placeVisits.find(x => x.uuid == visit.uuid)
+        if (element) { }
+        else {
+
+            placeVisits.push(visit);
+        }
         let result = service.updatePlace(place)
 
         setPlace(prevState => ({

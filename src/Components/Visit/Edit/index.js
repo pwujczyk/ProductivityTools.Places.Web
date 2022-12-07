@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useLocation } from 'react-router-dom'
 import service from '../../../services/api.js'
+import { v4 as uuidv4 } from 'uuid'
 
 
 function VisitEdit({ updateVisit, placeId, visit }) {
@@ -41,6 +42,10 @@ function VisitEdit({ updateVisit, placeId, visit }) {
     };
 
     const add = () => {
+        if (vistEdit.uuid==undefined)
+        {
+            vistEdit.uuid=uuidv4();
+        }
         console.log(vistEdit);
         updateVisit(vistEdit);
     }
@@ -48,8 +53,8 @@ function VisitEdit({ updateVisit, placeId, visit }) {
     return (
         <div>VisitEditpm
             <div>Mode: {mode}</div>
-            <div>Date:<input type="text" value={vistEdit.Date} onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Date: e.target.value }))}></input></div>
-            <div>Commment: <input type="text" value={vistEdit.Comment} onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Comment: e.target.value }))}></input></div>
+            <div>Date:<input type="text" value={vistEdit?.Date} onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Date: e.target.value }))}></input></div>
+            <div>Commment: <input type="text" value={vistEdit?.Comment} onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Comment: e.target.value }))}></input></div>
             Photos:
             <input type="file" onChange={onFileChange} />
             <button onClick={onFileUpload}>
