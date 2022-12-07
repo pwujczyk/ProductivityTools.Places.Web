@@ -46,10 +46,15 @@ function PlaceItem() {
         }
         let placeVisits = place.Visits;
 
-        let element = placeVisits.find(x => x.uuid == visit.uuid)
-        if (element) { }
-        else {
-
+        let elementInArray = false;
+        for (var i = 0; i < placeVisits.length; i++) {
+            if (placeVisits[i].uuid == visit.uuid) {
+                placeVisits[i] = { ...placeVisits[i], ...visit }
+                elementInArray=true;
+                break
+            }
+        }
+        if (elementInArray == false) {
             placeVisits.push(visit);
         }
         let result = service.updatePlace(place)
