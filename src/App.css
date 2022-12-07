@@ -18,3 +18,7 @@
 .visit{
     display:flow-root;
 }
+
+.debug{
+    color:gainsboro;
+}

@@ -50,7 +50,7 @@ function PlaceItem() {
         for (var i = 0; i < placeVisits.length; i++) {
             if (placeVisits[i].uuid == visit.uuid) {
                 placeVisits[i] = { ...placeVisits[i], ...visit }
-                elementInArray=true;
+                elementInArray = true;
                 break
             }
         }
@@ -106,13 +106,14 @@ function PlaceItem() {
     return (
         <div>
             <Link to='/'>Home</Link>
-            <p>item</p>
-            <p>id: {id}</p>
-            <p>PlaceId: {place && place.id}</p>
-            <p>PlaceName: {place && place.Name}</p>
+            <h2>Name: {place && place.Name}</h2> 
             <p>Description: {place && place.Description}</p>
             {renderVisits()}
-
+            <hr></hr>
+            <div className='debug'>
+                <p>id: {id}</p>
+                <p>PlaceId: {place && place.id}</p>
+            </div>
         </div>
 
     )

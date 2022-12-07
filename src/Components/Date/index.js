@@ -5,15 +5,17 @@ function Date() {
     const [dt, setDate] = useState("Waiting for date from server");
 
     useEffect(() => {
-        const call=async()=>{
-            let r=await service.getDate();
+        const call = async () => {
+            let r = await service.getDate();
             setDate(r);
         }
         call();
     }, []);
 
     return (
-        <p>{dt}</p>
+        <div className="debug">
+            <p>{dt}</p>
+        </div>
     )
 }
 
