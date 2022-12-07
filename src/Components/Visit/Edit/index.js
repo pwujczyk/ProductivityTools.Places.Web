@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom'
 import service from '../../../services/api.js'
 
 
-function VisitEdit({ updateVisit, placeId }) {
-    const [vistEdit, setVisitEdit] = useState({ Comment: '', Photos: [] });
+function VisitEdit({ updateVisit, placeId, visit }) {
+    const [vistEdit, setVisitEdit] = useState({ Comment: 'x', Photos: [] });
     const { pathname } = useLocation();
     const [mode, setMode] = useState('new')
     const [file, setFile] = useState();
@@ -16,6 +16,12 @@ function VisitEdit({ updateVisit, placeId }) {
             setMode('edit')
         }
     }, [])
+
+    useEffect(() => {
+        setVisitEdit(visit);
+        console.log("UseEffect set visit")
+        console.log(visit);
+    }, [visit])
 
 
     const onFileChange = event => {
@@ -42,8 +48,8 @@ function VisitEdit({ updateVisit, placeId }) {
     return (
         <div>VisitEditpm
             <div>Mode: {mode}</div>
-            <div>Date:<input type="text" onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Date: e.target.value }))}></input></div>
-            <div>Commment: <input type="text" onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Comment: e.target.value }))}></input></div>
+            <div>Date:<input type="text" value={vistEdit.Date} onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Date: e.target.value }))}></input></div>
+            <div>Commment: <input type="text" value={vistEdit.Comment} onChange={(e) => setVisitEdit(prevState => ({ ...prevState, Comment: e.target.value }))}></input></div>
             Photos:
             <input type="file" onChange={onFileChange} />
             <button onClick={onFileUpload}>
@@ -62,8 +68,8 @@ function VisitEdit({ updateVisit, placeId }) {
                         </div>
                     </span>)
                 })}
-            </span>
-            <button onClick={add}>Add</button>
+            </span><br/>
+            <button onClick={add}>Add or update visit</button>
         </div >
 
     )

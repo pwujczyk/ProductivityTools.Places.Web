@@ -10,6 +10,7 @@ function PlaceItem() {
     const [place, setPlace] = useState();
     const [updatePlace, setUpdatePlace] = useState(false)
     const [mode, setMode] = useState(null);
+    const [editedVisit,setEditedVisit]=useState(null);
 
     useEffect(() => {
         const call = async () => {
@@ -32,6 +33,11 @@ function PlaceItem() {
         setMode('newVisit')
     }
 
+    const editVisit = (item) => {
+        setMode('editVisit')
+        setEditedVisit(item);
+    }
+
     const updateVisit = (visit) => {
         debugger;
         console.log(visit);
@@ -43,7 +49,7 @@ function PlaceItem() {
         //     placeVisits = [];
         // }
 
-
+        
         placeVisits.push(visit);
         let result = service.updatePlace(place)
 
@@ -67,6 +73,11 @@ function PlaceItem() {
                 <VisitEdit updateVisit={updateVisit} placeId={place.id} />
             )
         }
+        else if (mode == 'editVisit') {
+            return (
+                <VisitEdit updateVisit={updateVisit} visit={editedVisit} placeId={place.id} />
+            )
+        }
         else {
             return (
                 <>
@@ -74,9 +85,9 @@ function PlaceItem() {
                     {console.log(place)}
                     {console.log(place?.visits)}
                     {place && place.Visits && place.Visits.map(x => {
-                        return (<VisitItem item={x}></VisitItem>)
+                        return (<VisitItem editVisit={editVisit} item={x}></VisitItem>)
                     })}
-                    
+
                     <div className="newLine">
                         <button onClick={newVisit}>New visit</button>
                     </div>
@@ -88,7 +99,7 @@ function PlaceItem() {
 
     return (
         <div>
-            <Link to='/'>Home</Link> 
+            <Link to='/'>Home</Link>
             <p>item</p>
             <p>id: {id}</p>
             <p>PlaceId: {place && place.id}</p>
