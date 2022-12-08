@@ -1,19 +1,20 @@
-function VisitItem({ item, editVisit }) {
+
+import Photo from './photo.js'
+
+function VisitItem({ item, editVisit, setThumbnail }) {
 
     const edit = () => {
         editVisit(item);
     }
 
-
     return (
-        <div className="visit">
+        <div className="visit" >
             <b>{item && item.Date} </b><span>{item && item.Comment}</span><button className='editLink' onClick={edit}></button><br /><br />
             {item && item.Photos && item.Photos.map(x => {
-                return (<div className="crop">
-                    {/* <span>{x}</span><br/> */}
-                    <img src={x} />
-                </div>)
+                return (<Photo setThumbnail={setThumbnail} photo={x} />)
             })}
+
+
         </div>
     )
 }

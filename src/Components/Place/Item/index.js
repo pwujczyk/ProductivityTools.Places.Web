@@ -20,14 +20,6 @@ function PlaceItem() {
         call();
     }, [])
 
-    // useEffect(()=>{
-    //     const call = async () => {
-    //         let result = await  service.updatePlace(place)
-    //         setPlace(result);
-    //     }
-    //     call();
-    // },[place.visits])
-
     const editPlace = () => {
         setMode('editPlace')
     }
@@ -39,6 +31,11 @@ function PlaceItem() {
     const editVisit = (item) => {
         setMode('editVisit')
         setEditedVisit(item);
+    }
+
+    const setThumbnail = async (url) => {
+        setPlace({...place, 'Thumbnail': url});
+        savePlace();
     }
 
     const updateVisit = async (visit) => {
@@ -68,12 +65,6 @@ function PlaceItem() {
         console.log("updatevisit, does place have visits?")
         console.log(place);
         setMode('visitList');
-        // let updatePlace = {
-        //     documentId: id,
-        //     name: "FDafsaf"
-        // }
-
-
     }
 
     const savePlace = async () => {
@@ -99,7 +90,7 @@ function PlaceItem() {
                     {console.log(place)}
                     {console.log(place?.visits)}
                     {place && place.Visits && place.Visits.map(x => {
-                        return (<VisitItem editVisit={editVisit} item={x}></VisitItem>)
+                        return (<VisitItem editVisit={editVisit} setThumbnail={setThumbnail} item={x}></VisitItem>)
                     })}
 
                     <div className="newLine">
