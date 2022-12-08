@@ -34,9 +34,11 @@ function PlaceItem() {
     }
 
     const setThumbnail = async (url) => {
-        setPlace({...place, 'Thumbnail': url});
-        savePlace();
+        setPlace({ ...place, 'Thumbnail': url });
     }
+    useEffect(() => {
+        savePlace();
+    }, [place?.Thumbnail])
 
     const updateVisit = async (visit) => {
         debugger;
