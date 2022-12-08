@@ -45,6 +45,9 @@
     color:gainsboro;
 }
 
+.description{
+    white-space: pre-line;
+}
 
 .editLink{
     background-color:transparent; /* Blue background */

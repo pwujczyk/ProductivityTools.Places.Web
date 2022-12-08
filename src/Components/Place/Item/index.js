@@ -115,8 +115,8 @@ function PlaceItem() {
         } else {
             return (
                 <>
-                    <h2>Name: {place && place.Name}<button className='editLink' onClick={editPlace}></button> </h2>
-                    <p>Description: {place && place.Description}</p>
+                    <h2>{place && place.Name}<button className='editLink' onClick={editPlace}></button> </h2>
+                    <p className="description">{place && place.Description}</p>
                 </>
             )
         }
