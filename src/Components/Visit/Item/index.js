@@ -11,6 +11,8 @@ function VisitItem({ item, editVisit, setThumbnail }) {
         <div className="visit" >
             <b>{item && item.Date} </b><span>{item && item.Comment}</span><button className='editLink' onClick={edit}></button><br /><br />
             {item && item.Photos && item.Photos.map(x => {
+                console.log("Photo");
+                console.log(x);
                 return (<Photo setThumbnail={setThumbnail} photo={x} />)
             })}
 

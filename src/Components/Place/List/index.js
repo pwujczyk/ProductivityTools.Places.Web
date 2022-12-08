@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import service from '../../../services/api.js'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Thumbnail from './thumbnail.js'
 
 function PlaceList() {
 
@@ -19,15 +20,15 @@ function PlaceList() {
 
     return (
         <div>
-            <span>Place List</span>
-            {placeList && placeList.map(x => {
+            <h1>Place List</h1><Link to='New'>New</Link>
+            <br></br>
+            {placeList && placeList.map(place => {
+                console.log("MAPPING");
+                console.log(place);
                 return (
-                    <div>
-                        <p>{x.id} - <Link to={"Item\\"+x.id}>{x.Name}</Link></p>
-                    </div>
+                    <Thumbnail place={place} />
                 )
-            })}
-            <Link to='New'>New</Link>
+            })}                
         </div>
     )
 }

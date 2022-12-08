@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
 function Photo({ photo, setThumbnail }) {
-    const [contextMenu, setContextMenu] = useState({ mouseX: 0, mouseY: 0 })
+    const [contextMenu, setContextMenu] = useState(null)
 
     const handleContextMenu = (event) => {
         console.log("handleContextMenu")
