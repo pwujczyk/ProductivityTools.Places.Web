@@ -1,7 +1,7 @@
 import './App.css';
 import Date from './Components/Date'
 import PlaceList from './Components/Place/List'
-import PlaceEdit from './Components/Place/Edit';
+import PlaceNew from './Components/Place/New';
 import PlaceItem from './Components/Place/Item';
 
 import VisitEdit from './Components/Visit/Edit';
@@ -19,8 +19,7 @@ function App() {
           <Route path='/' element={<PlaceList />} />
           <Route path='/List' element={<PlaceList />} />
           <Route path='/Date' element={<Date />} />
-          <Route path='/Edit' element={<PlaceEdit />} />
-          <Route path='/New' element={<PlaceEdit />} />
+          <Route path='/New' element={<PlaceNew />} />
           <Route path='/Item/:id' element={<PlaceItem />} />
           {/* <Route path='/VisitNew' element={<VisitEdit />} />
           <Route path='/VisitEdit' element={<VisitEdit />} /> */}
