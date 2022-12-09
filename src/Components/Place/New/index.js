@@ -11,13 +11,12 @@ function PlaceNew() {
     let navigate = useNavigate();
 
     const add = async () => {
-        var r = await service.newPlace(placeEdit);
-        console.log(r);
+        var documentId = await service.newPlace(placeEdit);
+        navigate(`/Item/${documentId}`)
     }
 
     const cancel = async () => {
         navigate("/");
-
     }
 
     return (
