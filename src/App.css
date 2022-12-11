@@ -41,8 +41,7 @@
 }
 
 .debug{
-    
-    color:gainsboro;
+    clear: both; float: left; display: block; position: relative;
 }
 
 .description{
