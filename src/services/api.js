@@ -6,14 +6,34 @@ async function getDate() {
     return response.data;
 }
 
+async function invokeCall(call) {
+    let token = localStorage.getItem('token')
+    console.log("token from localstorage", token)
+    const header = { headers: { Authorization: `Bearer ${token}` } }
+    try {
+        const response = await call(header);
+        //   debugger;
+        return response;
+    } catch (error) {
+        debugger;
+        console.log("Call endpoint");
+        console.log(error);
+        throw error;
+    }
+}
+
 async function getPlace(id) {
     const response = await axios.get(`${config.PATH_BASE}/Place?id=${id}`);
     return response.data;
 }
 
 async function getPlaceList() {
-    const response = await axios.get(`${config.PATH_BASE}/PlaceList`);
-    return response.data;
+    console.log("getPlaceList");
+    let call = async (header) => {
+        const response = await axios.get(`${config.PATH_BASE}/PlaceList`);
+        return response.data;
+    }
+    return invokeCall(call);
 }
 
 async function newPlace(data) {
