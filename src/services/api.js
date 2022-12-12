@@ -30,7 +30,7 @@ async function getPlace(id) {
 async function getPlaceList() {
     console.log("getPlaceList");
     let call = async (header) => {
-        const response = await axios.get(`${config.PATH_BASE}/PlaceList`);
+        const response = await axios.get(`${config.PATH_BASE}/PlaceList`, header);
         return response.data;
     }
     return invokeCall(call);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import service from '../../../services/api.js'
 import { Link } from 'react-router-dom'
 import Thumbnail from './thumbnail.js'
+import {logout} from '../../../Session/firebase'
 
 function PlaceList() {
 
@@ -18,8 +19,13 @@ function PlaceList() {
         call();
     }, [])
 
+    const logoutClick=()=>{
+        logout();
+    }
+
     return (
         <div>
+            <button onclick={logoutClick}>logout</button>
             <h1>Place List</h1><Link to='New'>New</Link>
             <br></br>
             {placeList && placeList.map(place => {
