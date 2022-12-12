@@ -10,12 +10,12 @@ import {
 } from "firebase/auth";
 
 const devfirebaseConfig = {
-    apiKey: "AIzaSyAKD7AagdCuXkEtc_IG8MQGwOfhiqLZohw",
-    authDomain: "ptlinksprod.firebaseapp.com",
-    projectId: "ptlinksprod",
-    storageBucket: "ptlinksprod.appspot.com",
-    messagingSenderId: "488456392633",
-    appId: "1:488456392633:web:f2b83882cb3b34a3a9b068"
+    apiKey: "AIzaSyBJUQlokv0c-P4-FSei_k7VWuOV0GLgXcg",
+    authDomain: "ptplacesdev.firebaseapp.com",
+    projectId: "ptplacesdev",
+    storageBucket: "ptplacesdev.appspot.com",
+    messagingSenderId: "664443768445",
+    appId: "1:664443768445:web:8df4bae69a6a6f77802b14"
 };
 
 const prodfirebaseConfig = {
@@ -28,8 +28,8 @@ const prodfirebaseConfig = {
 };
 
 const configName = process.env.NODE_ENV === 'development' ? devfirebaseConfig : prodfirebaseConfig;
-const app=initializeApp(configName);
-const auth=getAuth(app)
+const app = initializeApp(configName);
+const auth = getAuth(app)
 
 
 const googleProvider = new GoogleAuthProvider();
