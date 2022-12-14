@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { config } from '../config.js'
+import { tokenExpired } from '../Session/firebase'
 
 async function getDate() {
     const response = await axios.get(`${config.PATH_BASE}/Date`)
@@ -7,6 +8,11 @@ async function getDate() {
 }
 
 async function invokeCall(call) {
+    if (tokenExpired())
+    {
+        console.log("seems that token is expired. Not performing a call");
+        return;
+    }
     let token = localStorage.getItem('token')
     console.log("token from localstorage", token)
     const header = { headers: { Authorization: `Bearer ${token}` } }

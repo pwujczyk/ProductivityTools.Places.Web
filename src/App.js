@@ -16,9 +16,10 @@ function App() {
 
 
   return (
-    <AuthProvider>
-      <div className="App">
-        <Router>
+
+    <div className="App">
+      <Router>
+        <AuthProvider>
           <Routes>
             <Route path='/Login' element={<Login />} />
             <Route path='/' element={<PlaceList />} />
@@ -29,10 +30,11 @@ function App() {
             {/* <Route path='/VisitNew' element={<VisitEdit />} />
           <Route path='/VisitEdit' element={<VisitEdit />} /> */}
           </Routes>
-        </Router>
-        <Date />
-      </div>
-    </AuthProvider>
+        </AuthProvider>
+      </Router>
+      <Date />
+    </div>
+
   );
 }
 
