@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 function Thumbnail({ place }) {
 
-    console.log("thumbnail")
-    console.log(place);
+    // console.log("thumbnail")
+    // console.log(place);
     const defaultThumbnail = "/thumbnail/thumbnail.png";
     return (
         <div className='thumbnailContainer' >

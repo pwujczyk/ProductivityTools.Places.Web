@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import service from '../../../services/api.js'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Thumbnail from './thumbnail.js'
-import {logout} from '../../../Session/firebase'
+import { logout } from '../../../Session/firebase'
+import { useAuth } from '../../../Session/AuthContext'
 
 function PlaceList() {
 
+    const ctx = useAuth();
+    let navigate = useNavigate();
 
     const [placeList, setPlaceList] = useState([]);
 
@@ -19,24 +22,31 @@ function PlaceList() {
         call();
     }, [])
 
-    const logoutClick=()=>{
+    const logoutClick = () => {
+        console.log('logout')
+        console.log(ctx);
         logout();
+        
     }
 
-    return (
-        <div>
-            <button onclick={logoutClick}>logout</button>
-            <h1>Place List</h1><Link to='New'>New</Link>
-            <br></br>
-            {placeList && placeList.map(place => {
-                console.log("MAPPING");
-                console.log(place);
-                return (
-                    <Thumbnail place={place} />
-                )
-            })}                
-        </div>
-    )
+    if (ctx.user == undefined) {
+        console.log('user.context not undefined')
+        navigate('/Login')
+    }
+    else {
+        return (
+            <div>
+                <button onClick={logoutClick}>Log out</button>
+                <h1>Place List</h1><Link to='New'>New</Link>
+                <br></br>
+                {placeList && placeList.map(place => {
+                    return (
+                        <Thumbnail place={place} />
+                    )
+                })}
+            </div>
+        )
+    }
 }
 
 export default PlaceList

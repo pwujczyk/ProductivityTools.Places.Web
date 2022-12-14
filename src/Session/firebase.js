@@ -52,6 +52,7 @@ const signInWithGoogle = async () => {
 const logout = () => {
     signOut(auth);
     localStorage.removeItem("token")
+    console.log('token removed')
 };
 
 const getToken = () => {
