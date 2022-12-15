@@ -11,7 +11,7 @@ async function invokeCall(call) {
     if (tokenExpired())
     {
         console.log("seems that token is expired. Not performing a call");
-        return;
+       // return;
     }
     let token = localStorage.getItem('token')
     console.log("token from localstorage", token)
@@ -21,7 +21,6 @@ async function invokeCall(call) {
         //   debugger;
         return response;
     } catch (error) {
-        debugger;
         console.log("Call endpoint");
         console.log(error);
         throw error;
