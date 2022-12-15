@@ -1,12 +1,14 @@
 import { auth, signInWithGoogle } from "./firebase"
+import { useNavigate } from "react-router-dom";
 
-export default function Login({ callback }) {
+export default function Login() {
 
+    let navigate=useNavigate();
 
     const signIn = async () => {
         let user = await signInWithGoogle();
         if (user) {
-            callback(user);
+            navigate("/")
         }
     }
 
