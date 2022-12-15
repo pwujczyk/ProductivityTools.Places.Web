@@ -34,11 +34,15 @@ function PlaceItem() {
     }
 
     const setThumbnail = async (url) => {
+        let x = { ...place, 'Thumbnail': url }
+        let result = await service.updatePlace(x)
+        return result;
         setPlace({ ...place, 'Thumbnail': url });
     }
-    useEffect(() => {
-        savePlace();
-    }, [place?.Thumbnail])
+    //here it is called to often, every time page is loading
+    // useEffect(() => {
+    //     savePlace();
+    // }, [place?.Thumbnail])
 
     const updateVisit = async (visit) => {
         debugger;
@@ -59,6 +63,7 @@ function PlaceItem() {
         if (elementInArray == false) {
             placeVisits.push(visit);
         }
+        debugger;
         let result = await savePlace();
 
         setPlace(prevState => ({

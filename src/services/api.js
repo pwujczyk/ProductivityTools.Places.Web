@@ -48,7 +48,7 @@ async function newPlace(data) {
 }
 
 async function updatePlace(place) {
-
+    debugger;
     const response = await axios.post(`${config.PATH_BASE}/UpdatePlace`, place);
     let r = response.data;
     return r;
