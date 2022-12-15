@@ -8,7 +8,7 @@ function VisitEdit({ updateVisit, placeId, visit }) {
     const [vistEdit, setVisitEdit] = useState({ Comment: 'x', Photos: [] });
     const { pathname } = useLocation();
     const [mode, setMode] = useState('new')
-    const [file, setFile] = useState();
+    const [files, setFiles] = useState();
 
     useEffect(() => {
         if (pathname == '/VisitNew') {
@@ -27,25 +27,34 @@ function VisitEdit({ updateVisit, placeId, visit }) {
 
     const onFileChange = event => {
         console.log(vistEdit);
-        setFile(event.target.files[0])
-        console.log(event.target.files[0])
+        debugger;
+        const chosenFiles = Array.prototype.slice.call(event.target.files)
+
+        setFiles(chosenFiles);
+        console.log(chosenFiles)
 
     };
 
     const onFileUpload = async () => {
-        var r = await service.uploadPhoto(file, placeId);
         let photos = vistEdit?.Photos || []
-        photos.push(r);
+        for (const file of files)
+        {
+            var r = await service.uploadPhoto(file, placeId);
+            photos.push(r);
+            console.log("onFileUpload");
+            console.log(r);
+        }
+
+        console.log("photos");
+        console.log(photos);
 
         setVisitEdit({ ...vistEdit, Photos: photos });
-        console.log("onFileUpload");
-        console.log(r);
+
     };
 
     const add = () => {
-        if (vistEdit.uuid==undefined)
-        {
-            vistEdit.uuid=uuidv4();
+        if (vistEdit.uuid == undefined) {
+            vistEdit.uuid = uuidv4();
         }
         console.log(vistEdit);
         updateVisit(vistEdit);
@@ -61,7 +70,8 @@ function VisitEdit({ updateVisit, placeId, visit }) {
             <button onClick={onFileUpload}>
                 Upload!
             </button>
-            <span>file{file && file.name}</span>
+            {console.log(files)}
+            <span>file: {files && files?.map(x => { return (<span>{x.name}</span>) })}</span>
             <span>{vistEdit && vistEdit.Comment}</span>
             <br />
             <span>Photos:
@@ -74,7 +84,7 @@ function VisitEdit({ updateVisit, placeId, visit }) {
                         </div>
                     </span>)
                 })}
-            </span><br/>
+            </span><br />
             <button onClick={add}>Add or update visit</button>
         </div >
 

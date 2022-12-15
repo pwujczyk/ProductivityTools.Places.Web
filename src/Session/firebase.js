@@ -19,12 +19,12 @@ const devfirebaseConfig = {
 };
 
 const prodfirebaseConfig = {
-    apiKey: "AIzaSyAKD7AagdCuXkEtc_IG8MQGwOfhiqLZohw",
-    authDomain: "ptlinksprod.firebaseapp.com",
-    projectId: "ptlinksprod",
-    storageBucket: "ptlinksprod.appspot.com",
-    messagingSenderId: "488456392633",
-    appId: "1:488456392633:web:f2b83882cb3b34a3a9b068"
+    apiKey: "AIzaSyCWOJk9c1u0WOc_UGa5LtsoQjK8IKnH7GU",
+    authDomain: "ptplacesprod.firebaseapp.com",
+    projectId: "ptplacesprod",
+    storageBucket: "ptplacesprod.appspot.com",
+    messagingSenderId: "717243205979",
+    appId: "1:717243205979:web:ba8142f87b119a0c68f27e"
 };
 
 const configName = process.env.NODE_ENV === 'development' ? devfirebaseConfig : prodfirebaseConfig;
