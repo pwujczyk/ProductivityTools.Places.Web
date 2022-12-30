@@ -36,6 +36,42 @@ function PlaceList() {
     console.log(ctx?.data?.user);
     console.log(ctx?.data);
 
+    const getMinimumVisit = (visits) => {
+        let minVisit = 'StringValueHack';
+        visits.forEach(element => {
+
+            console.log("Visita");
+            console.log(element);
+            if (element.Date < minVisit) {
+                minVisit = element.Date;
+            }
+        });
+        return minVisit;
+    }
+
+    const sorting = (a, b) => {
+        if (a.Visits == undefined) {
+            console.log("undefined");
+            return 1;
+        }
+        else {
+            if (b.Visits == undefined) {
+                return -1;
+            }
+            else {
+                debugger;
+                let aMinVisitDate = getMinimumVisit(a.Visits);
+                let bMinVisitDate = getMinimumVisit(b.Visits);
+                if (aMinVisitDate < bMinVisitDate) {
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+        }
+    }
+
     return (
         <div>
             <button onClick={logoutClick}>Log out</button>
@@ -43,7 +79,7 @@ function PlaceList() {
             <span>user:{ctx.data?.user?.email}</span>
             <h1>Place List</h1><Link to='New'>New</Link>
             <br></br>
-            {placeList && placeList.map(place => {
+            {placeList && placeList.sort(sorting).map(place => {
                 return (
                     <Thumbnail place={place} />
                 )
