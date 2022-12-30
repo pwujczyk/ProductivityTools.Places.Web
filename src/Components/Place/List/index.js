@@ -37,16 +37,16 @@ function PlaceList() {
     console.log(ctx?.data);
 
     const getMinimumVisit = (visits) => {
-        let minVisit = 'StringValueHack';
+        let maxVisit = '';
         visits.forEach(element => {
 
             console.log("Visita");
             console.log(element);
-            if (element.Date < minVisit) {
-                minVisit = element.Date;
+            if (element.Date > maxVisit) {
+                maxVisit = element.Date;
             }
         });
-        return minVisit;
+        return maxVisit;
     }
 
     const sorting = (a, b) => {
