@@ -1,6 +1,6 @@
 
 import Thumbnail from './thumbnail.js'
-function Grid({ grouping,placeList }) {
+function Grid({placeList,grouping }) {
 
     const getMinimumVisit = (visits) => {
         let maxVisit = '';
@@ -38,7 +38,7 @@ function Grid({ grouping,placeList }) {
         }
     }
 
-    if (grouping == 'groupByYearView') {
+    if (grouping == 'groupByYear') {
         return (
             <div>groupByYearView</div>
         )

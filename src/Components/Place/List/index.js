@@ -40,6 +40,10 @@ function PlaceList() {
     console.log(ctx?.data);
 
   
+    const groupByYear=()=>
+    {
+       
+    }
 
     return (
         <div>
@@ -50,8 +54,10 @@ function PlaceList() {
             <h1>Place List</h1><Link to='New'>New</Link>
             <br></br>
             <span>Group by: year, area</span>
+            <button onClick={()=>setGrouping('default')}>No grouping</button>
+            <button onClick={()=> setGrouping('groupByYear')} >Group by year</button>
             <br></br>
-            <Grid placeList={placeList}></Grid>
+            <Grid placeList={placeList} grouping={grouping}></Grid>
         </div>
     )
 
