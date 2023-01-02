@@ -7,7 +7,6 @@ function GroupByYearView({ placeList }) {
         const getYears = () => {
             placeList.forEach(place => {
                 console.log("getYears");
-                console.log(place);
                 place.Visits?.forEach((visit) => {
                     if (visit.Date!=undefined)
                     {
