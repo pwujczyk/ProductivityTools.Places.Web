@@ -1,14 +1,13 @@
 
 import GroupByYearView from './groupByYearView.js';
 import GroupByLastVisit from './groupByLastVisit.js';
-import Thumbnail from './thumbnail.js'
 function Grid({ placeList, grouping }) {
 
 
 
     if (grouping == 'groupByYear') {
         return (
-            <GroupByYearView></GroupByYearView>
+            <GroupByYearView  placeList={placeList}></GroupByYearView>
         )
     }
     else {
