@@ -24,7 +24,6 @@ function groupByLastVisit({ placeList }) {
                 return -1;
             }
             else {
-                debugger;
                 let aMinVisitDate = getMinimumVisit(a.Visits);
                 let bMinVisitDate = getMinimumVisit(b.Visits);
                 if (aMinVisitDate < bMinVisitDate) {
