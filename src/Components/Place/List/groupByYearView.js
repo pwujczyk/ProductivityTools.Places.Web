@@ -15,7 +15,6 @@ function GroupByYearView({ placeList }) {
                         console.log("DATE");
                         let x = new Date(visit.Date);
                         let utcYear = x.getFullYear()
-                        debugger;
                         if (yearDictionary[utcYear] == undefined) {
                             let emptyPlace = { ...place }
                             emptyPlace.Visits = [visit]
@@ -30,7 +29,6 @@ function GroupByYearView({ placeList }) {
                                 placesInYear.push(emptyPlace)
                                 chosenPlaceInYear = emptyPlace;
                             }
-                            debugger;
                             chosenPlaceInYear.Visits.push(visit);
 
                         }
@@ -55,8 +53,14 @@ function GroupByYearView({ placeList }) {
                                     <div>PlaceId: {x.id} PlaceName: {x.Name}</div>
                                     <div>
                                         {x.Visits.map(visit => {
+                                            console.log("VV")
+                                            console.log(visit);
+                                            debugger;
                                             return (
-                                                <div>{visit.Date}</div>
+                                                <div>
+                                                    <div>{visit.Date}</div>
+                                                    <div>{visit.Photos && visit.Photos.length > 0 ? visit.Photos[0] : "fda"}</div>
+                                                </div>
                                             )
                                         })}
                                     </div>
