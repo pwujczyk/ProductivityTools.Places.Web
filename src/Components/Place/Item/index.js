@@ -33,12 +33,13 @@ function PlaceItem() {
         setEditedVisit(item);
     }
 
-    const setThumbnail = async (url) => {
+    const setPlaceThumbnail = async (url) => {
         let x = { ...place, 'Thumbnail': url }
         let result = await service.updatePlace(x)
         return result;
         setPlace({ ...place, 'Thumbnail': url });
     }
+
     //here it is called to often, every time page is loading
     // useEffect(() => {
     //     savePlace();
@@ -97,7 +98,7 @@ function PlaceItem() {
                     {console.log(place)}
                     {console.log(place?.visits)}
                     {place && place.Visits && place.Visits.map(x => {
-                        return (<VisitItem editVisit={editVisit} setThumbnail={setThumbnail} item={x}></VisitItem>)
+                        return (<VisitItem editVisit={editVisit} updateVisit={updateVisit} setPlaceThumbnail={setPlaceThumbnail} item={x}></VisitItem>)
                     })}
 
                     <div className="newLine">

@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
-function Photo({ photo, setThumbnail }) {
+function Photo({ photo, setPlaceThumbnail, setVisitThumbnail }) {
     const [contextMenu, setContextMenu] = useState(null)
 
     const handleContextMenu = (event) => {
@@ -23,11 +23,18 @@ function Photo({ photo, setThumbnail }) {
         );
     };
 
-    const handleClose = (e) => {
+    const handlePlaceClose = (e) => {
         console.log(e);
-        setThumbnail(photo);
+        setPlaceThumbnail(photo);
         setContextMenu(null);
     };
+
+    const handleVisitClose = (e) => {
+        console.log(e);
+        setVisitThumbnail(photo);
+        setContextMenu(null);
+    };
+
     return (
         <div className="crop" onContextMenu={handleContextMenu} style={{ cursor: 'context-menu' }}>
             {/* <span>{x}</span><br/> */}
@@ -35,7 +42,7 @@ function Photo({ photo, setThumbnail }) {
 
             <Menu
                 open={contextMenu !== null}
-                onClose={handleClose}
+                // onClose={handlePlaceClose}
                 anchorReference="anchorPosition"
                 anchorPosition={
                     contextMenu !== null
@@ -43,7 +50,8 @@ function Photo({ photo, setThumbnail }) {
                         : undefined
                 }
             >
-                <MenuItem onClick={handleClose}>Set as thumbnail</MenuItem>
+                <MenuItem onClick={handlePlaceClose}>Set as Place thumbnail</MenuItem>
+                <MenuItem onClick={handleVisitClose}>Set as Visit thumbnail</MenuItem>
 
             </Menu>
         </div>

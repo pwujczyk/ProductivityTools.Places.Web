@@ -1,10 +1,15 @@
 
 import Photo from './photo.js'
 
-function VisitItem({ item, editVisit, setThumbnail }) {
+function VisitItem({ item, editVisit, setPlaceThumbnail, updateVisit }) {
 
     const edit = () => {
         editVisit(item);
+    }
+
+    const setVisitThumbnail = (photo) => {
+        let visit = { ...item, visitThumbnail: photo }
+        updateVisit(visit);
     }
 
     return (
@@ -13,7 +18,7 @@ function VisitItem({ item, editVisit, setThumbnail }) {
             {item && item.Photos && item.Photos.map(x => {
                 console.log("Photo");
                 console.log(x);
-                return (<Photo setThumbnail={setThumbnail} photo={x} />)
+                return (<Photo setPlaceThumbnail={setPlaceThumbnail} setVisitThumbnail={setVisitThumbnail} photo={x} />)
             })}
 
 
