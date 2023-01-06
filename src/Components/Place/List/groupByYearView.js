@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Thumbnail from './thumbnail.js'
 
 function GroupByYearView({ placeList }) {
 
@@ -41,25 +42,39 @@ function GroupByYearView({ placeList }) {
         getYears();
     }, [placeList])
 
+    const getThumbnail = (visit) => {
+        if (visit.visitThumbnail) {
+            return visit.visitThumbnail;
+        } else {
+            if (visit.Photos && visit.Photos.length > 0) {
+                return visit.Photos[0]
+            }
+            else {
+                return undefined
+            }
+        }
+    }
+
     return (
         <div>Group by year:
             {
                 Object.keys(placesByYear).map((key, index) => (
                     <div>
-                        <div>{key}</div>
-                        <div>{placesByYear[key].map(x => {
+                        <div>key: {key}</div>
+                        <div>{placesByYear[key].map(place => {
                             return (
                                 <div>
-                                    <div>PlaceId: {x.id} PlaceName: {x.Name}</div>
+                                    {/* <div>PlaceId: {place.id} PlaceName: {place.Name}</div> */}
                                     <div>
-                                        {x.Visits.map(visit => {
+                                        {place.Visits.map(visit => {
                                             console.log("VV")
                                             console.log(visit);
-                                            debugger;
+
                                             return (
                                                 <div>
-                                                    <div>{visit.Date}</div>
-                                                    <div>{visit.Photos && visit.Photos.length > 0 ? visit.Photos[0] : "fda"}</div>
+                                                    {/* <div>{visit.Date}</div>
+                                                    <div>{visit.Photos && visit.Photos.length > 0 ? visit.Photos[0] : "fda"}</div> */}
+                                                    <Thumbnail place={place} thumbnail={getThumbnail(visit)} />
                                                 </div>
                                             )
                                         })}
@@ -67,6 +82,7 @@ function GroupByYearView({ placeList }) {
                                 </div>
                             )
                         })}</div>
+                        <div className='newLine'></div>
                     </div>
                 ))
             }

@@ -40,7 +40,7 @@ function groupByLastVisit({ placeList }) {
         <div>
             {placeList && placeList.sort(sorting).map(place => {
                 return (
-                    <Thumbnail place={place} />
+                    <Thumbnail place={place} thumbnail={place.Thumbnail} />
                 )
             })
             }

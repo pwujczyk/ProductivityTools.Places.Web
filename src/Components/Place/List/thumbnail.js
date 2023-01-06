@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function Thumbnail({ place }) {
+function Thumbnail({ place, thumbnail }) {
 
     // console.log("thumbnail")
     // console.log(place);
@@ -8,7 +8,7 @@ function Thumbnail({ place }) {
     return (
         <div className='thumbnailContainer' >
             <div className='thumbnail crop'>
-                <img src={place.Thumbnail ?? defaultThumbnail}></img>
+                <img src={thumbnail ?? defaultThumbnail}></img>
             </div><br />
             <Link to={"Item\\" + place.id}>{place.Name}</Link>
         </div>)
