@@ -48,7 +48,16 @@ function GroupByYearView({ placeList }) {
             return visit.visitThumbnail;
         } else {
             if (visit.Photos && visit.Photos.length > 0) {
-                return visit.Photos[0]
+                if (visit.Photos.length == 1) {
+                    if (visit.Thumbnail != undefined) {
+                        return visit.Thumbnail;
+                    }
+                    else {
+                        return visit.Photos[0]
+                    }
+                } else {
+                    return visit.Photos[0]
+                }
             }
             else {
                 return undefined
