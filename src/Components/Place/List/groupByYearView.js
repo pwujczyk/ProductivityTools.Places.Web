@@ -30,8 +30,9 @@ function GroupByYearView({ placeList }) {
                                 placesInYear.push(emptyPlace)
                                 chosenPlaceInYear = emptyPlace;
                             }
-                            chosenPlaceInYear.Visits.push(visit);
-
+                            else {
+                                chosenPlaceInYear.Visits.push(visit);
+                            }
                         }
                     }
                 })
