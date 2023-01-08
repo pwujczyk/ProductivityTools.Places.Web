@@ -6,7 +6,6 @@ function VisitThumbnail({ visit }) {
     // console.log(place);
     const defaultThumbnail = "/thumbnail/thumbnail.png";
     const getThumbnail = () => {
-        debugger;
         if (visit==undefined) {
             return defaultThumbnail;
         }
@@ -28,7 +27,6 @@ function VisitThumbnail({ visit }) {
         <div className='thumbnailContainer' >
             <div className='thumbnail crop'>
                 <img src={getThumbnail()}></img>
-                <div>Name:{visit.Place.Name}</div>
             </div><br />
             <Link to={"Item\\" + visit.Place.id}>{visit.Place.Name} {visit.Date}</Link>
         </div>)
