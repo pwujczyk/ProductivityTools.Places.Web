@@ -56,7 +56,7 @@ function PlaceList() {
             <span>Group by: year, area</span>
             <button onClick={()=>setGrouping('default')}>No grouping</button>
             <button onClick={()=> setGrouping('groupByYear')} >Group by year</button>
-            <button onClick={()=> setGrouping('groupByYear2')} >Group by year2</button>
+            <button onClick={()=> setGrouping('groupByYear2')} >Group by year3</button>
             <br></br>
             <Grid placeList={placeList} grouping={grouping}></Grid>
         </div>

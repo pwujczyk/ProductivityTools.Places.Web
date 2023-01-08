@@ -20,10 +20,12 @@ function GroupByYearView2({ placeList }) {
                         if (yearDictionary[utcYear] == undefined) {
                             // let emptyPlace = { ...place }
                             // emptyPlace.Visits = [visit]
+                            visit.Place=place;
                             yearDictionary[utcYear] = [visit]
                         }
                         else {
                             let visitsInYear = yearDictionary[utcYear]
+                            visit.Place=place;
                             visitsInYear.push(visit);
                           //  let chosenVisitInYear = visitsInYear.find(x => x.uuid == visit.uuid);
                             //if (chosenVisitInYear == undefined) {
@@ -68,11 +70,11 @@ function GroupByYearView2({ placeList }) {
     }
 
     return (
-        <div>Group by year3:
+        <div>Group by year4:
             {
                 Object.keys(visitsByYear).map((key, index) => (
                     <div>
-                        <div>key: {key}</div>
+                        <div>key2: {key}</div>
                         <div>{visitsByYear[key].map(visit => {
                             // return (
                                 // <div>
