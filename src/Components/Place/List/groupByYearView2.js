@@ -33,7 +33,7 @@ function GroupByYearView2({ placeList }) {
             });
             Object.keys(yearDictionary).map((key, index) => {
                 debugger;
-                yearDictionary[key].sort((a, b) => a.Date > b.Date ? 1 : -1)
+                yearDictionary[key].sort((a, b) => a.Date > b.Date ? -1 : 1)
             });
 
 
