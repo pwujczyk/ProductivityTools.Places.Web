@@ -31,14 +31,15 @@ function GroupByYearView2({ placeList }) {
                     }
                 })
             });
+            let structure = []
             Object.keys(yearDictionary).map((key, index) => {
-                debugger;
-                yearDictionary[key].sort((a, b) => a.Date > b.Date ? -1 : 1)
+                let visits = yearDictionary[key].sort((a, b) => a.Date > b.Date ? -1 : 1)
+                structure.push({ 'key': key, 'data': visits });
             });
-
-
-            setVisitsByYear(yearDictionary);
-            console.log(yearDictionary)
+            structure.sort((a, b) => a.key > b.key ? -1 : 1);
+            debugger;
+            setVisitsByYear(structure);
+            console.log(structure)
         }
         getYears();
     }, [placeList])
@@ -68,10 +69,10 @@ function GroupByYearView2({ placeList }) {
     return (
         <div>Group by year4:
             {
-                Object.keys(visitsByYear).map((key, index) => (
+                visitsByYear.map(item => (
                     <div>
-                        <div>key2: {key}</div>
-                        <div>{visitsByYear[key].map(visit => {
+                        <div>key2: {item.key}</div>
+                        <div>{item.data.map(visit => {
                             // return (
                             // <div>
                             {/* <div>PlaceId: {place.id} PlaceName: {place.Name}</div> */ }
