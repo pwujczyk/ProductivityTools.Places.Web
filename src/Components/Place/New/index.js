@@ -24,6 +24,7 @@ function PlaceNew() {
             <h1>Adding new place</h1>
             <TextField label="Name" fullWidth variant="outlined" value={placeEdit?.Name} onChange={(e) => setPlaceEdit({ ...placeEdit, Name: e.target.value })} /><br />
             <TextField label="Description" fullWidth variant="outlined" value={placeEdit?.Description} multiline minRows={3} onChange={(e) => setPlaceEdit({ ...placeEdit, Description: e.target.value })} /><br />
+            <TextField label="City" fullWidth variant="outlined" value={placeEdit?.City} onChange={(e) => setPlaceEdit({ ...placeEdit, City: e.target.value })} /><br />
 
             {/* <span><span>name</span><input type="text" onChange={(e) => setPlaceEdit({ ...placeEdit, Name: e.target.value })}></input></span>
             <span><span>Description</span><input type="text" onChange={(e) => setPlaceEdit({ ...placeEdit,Description: e.target.value })}></input></span>
