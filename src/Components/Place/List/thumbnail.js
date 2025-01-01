@@ -10,7 +10,7 @@ function Thumbnail({ place, thumbnail }) {
             <div className='thumbnail crop'>
                 <img src={thumbnail ?? defaultThumbnail}></img>
             </div><br />
-            <Link to={"Item\\" + place.id}>{place.Name}</Link>
+            <Link to={"Item\\" + place.id}>{place.Name}</Link>[{place.City}]
         </div>)
 }
 

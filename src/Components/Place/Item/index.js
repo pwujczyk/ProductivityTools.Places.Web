@@ -115,14 +115,20 @@ function PlaceItem() {
                 <>
                     <h2>Name: <input type="text" value={place?.Name} onChange={(e) => setPlace(prevState => ({ ...prevState, Name: e.target.value }))}></input></h2>
                     <p>Description: {place && place.Description}</p>
+                    <input type="text" value={place?.Description} onChange={(e) => setPlace(prevState => ({ ...prevState, Description: e.target.value }))}></input>
+                    <p>City</p>
+                    <input type="text" value={place?.City} onChange={(e) => setPlace(prevState => ({ ...prevState, City: e.target.value }))}></input>
+
                     <button onClick={savePlace}>save</button><br />
+
                 </>
             )
         } else {
             return (
                 <>
                     <h2>{place && place.Name}<button className='editLink' onClick={editPlace}></button> </h2>
-                    <p className="description">{place && place.Description}</p>
+                    <p className="description">Description: {place && place.Description}</p>
+                     <p className="description">City: {place && place.City}</p>
                 </>
             )
         }
