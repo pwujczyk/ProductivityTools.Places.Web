@@ -10,16 +10,21 @@ function GroupByYearView({ placeList }) {
         const getYears = () => {
             let yearDictionary = {};
             placeList.forEach(place => {
-                console.log("getYears");
+                //console.log("getYears");
                 place.Visits?.forEach((visit) => {
                     if (visit.Date != undefined) {
-                        console.log("DATE");
+                        //console.log("DATE",visit);
                         let x = new Date(visit.Date);
                         let utcYear = x.getFullYear()
                         if (yearDictionary[utcYear] == undefined) {
                             let emptyPlace = { ...place }
                             emptyPlace.Visits = [visit]
                             yearDictionary[utcYear] = [emptyPlace]
+                            console.log("utc year",utcYear, x, visit)
+                            if (utcYear=='NaN')
+                            {
+                                debugger;
+                            }
                         }
                         else {
                             let placesInYear = yearDictionary[utcYear]
@@ -38,7 +43,7 @@ function GroupByYearView({ placeList }) {
                 })
             });
             setPlacesByYear(yearDictionary);
-            console.log(yearDictionary)
+            console.log("year dictionarys", yearDictionary)
         }
         getYears();
     }, [placeList])
@@ -68,7 +73,7 @@ function GroupByYearView({ placeList }) {
     return (
         <div>Group by year:
             {
-                Object.keys(placesByYear).map((key, index) => (
+                Object.keys(placesByYear).sort(function ( a, b ) { return b - a; }).map((key, index) => (
                     <div>
                         <div>key: {key}</div>
                         <div>{placesByYear[key].map(place => {
@@ -77,8 +82,8 @@ function GroupByYearView({ placeList }) {
                                     {/* <div>PlaceId: {place.id} PlaceName: {place.Name}</div> */}
                                     <div>
                                         {place.Visits.map(visit => {
-                                            console.log("VV")
-                                            console.log(visit);
+                                            //console.log("VV")
+                                            //console.log(visit);
 
                                             return (
                                                 <div>
